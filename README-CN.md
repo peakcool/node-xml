@@ -8,7 +8,7 @@ Contributions from David Joham
 
 <!-- TOC -->
 
-- [Install](#install)
+- [安装](#安装)
 - [SAX Parser](#sax-parser)
     - [new xml.SaxParser()](#new-xmlsaxparser)
     - [new xml.SaxParser(callback)](#new-xmlsaxparsercallback)
@@ -30,7 +30,7 @@ Contributions from David Joham
 
 <!-- /TOC -->
 
-# Install
+# 安装
 
 ```
 npm install node-xml
@@ -43,102 +43,104 @@ API
 SaxParser
 ---------
 
-Node-xml provides a SAX2 parser interface that can take a string, file. The parser can take characters from the document in chunks. To send chunks of the document to the parser use 'parseString(xml)'
+Node-xml 提供`SAX2`可以接受一个字符串文件的解析器接口。解析器可以从文档中以字块形式获取字符。将文档发送给解析器可以使用`parsestring(xml)`。
 
 # SAX Parser
 
 ## new xml.SaxParser()
-	* Instantiate a new SaxParser
-	* returns: a SaxParser object
+	* 实例化 SaxParser
+	* 返回: SaxParser对象
 
 ## new xml.SaxParser(callback)
-	* Instantiate a new SaxParser
-	* returns: a SaxParser object
-	* Arguments
-		*callback - a function that accepts the new sax parser as an argument
+	* 实例化 SaxParser
+	* 返回: SaxParser对象
+	* 参数
+		* callback - 回调方法
 	
 # Parse
 
 ## parser.parseString(string)
 
-Parse an in memory string
-* return: boolean. true if no errors, false otherwise
-* Arguments
-	* string - a string representing the document to parse
+解析字符串
+* 返回： true/false
+* 参数：string - 需要解析的字符串
 
 ## parser.parseFile(filename)
 
-Parse a file
-* return: boolean. true if no errors, false otherwise
-* Arguments
-	* filename - a string representing the file to be parsed
+解析文件
+* 返回： true/false
+* 参数：string - 需要解析的文件字符串
 	
 ## parser.pause()
-pauses parsing of the document
+
+暂停解析
 
 ## parser.resume()
-resumes parsing of the document
+
+恢复解析
 
 # Callbacks
 
 ## parser.onStartDocument(function() {})
 
-Called at the start of a document
+开始解析时调用
 
 ## parse.onEndDocument(function() {})
 
- Called at the end of the document parse
+介绍解析时调用
 
 ## parser.onStartElementNS(function(elem, attrs, prefix, uri, namespaces) {})
 
-Called on an open element tag
-* Arguments
-	* elem - a string representing the element name
-	* attrs - an array of arrays: [[key, value], [key, value]]
-	* prefix - a string representing the namespace prefix of the element
-	* uri - the namespace URI of the element
-	* namespaces - an array of arrays: [[prefix, uri], [prefix, uri]]
+标签开始时
+* 参数
+    * `elem` - 表示元素名称的字符串
+    * `attrs` - 二维数组类型: `[[key, value], [key, value]]`
+    * `prefix` - 表示元素名称空间前缀的字符串
+    * `uri` - 元素命名空间
+    * `namespaces` - 二维数组 `[[prefix, uri], [prefix, uri]]`
 
 ## parser.onEndElementNS(function(elem, prefix, uri) {})
 
-Called at the close of an element
-* Arguments
-	* elem - a string representing the element name
-    * prefix - a string representing the namespace prefix of the element
-    * uri - the namespace URI of the element
+标签结束时
+* 参数
+    * `elem` - 表示元素名称的字符串
+    * `prefix` - 表示元素名称空间前缀的字符串
+    * `uri` - 元素命名空间
+
 
 ## parser.onCharacters(function(chars) {})
 
-Called when a set of content characters is encountered
-* Arguments
-	* chars - a string of characters
+当解析内容为一组内容字符时调用
+* 参数
+    * chars - 字符串
 
 ## parser.onCdata(function(cdata) {})
 
-Called when a CDATA is encountered
-* Arguments
-	* cdata - a string representing the CDATA
+当解析内容为CDATA时调用
+* 参数
+    * cdata - 表示CDATA的字符串
 
 ## parser.onComment(function(msg) {})
 
-Called when a comment is encountered
-* Arguments
-	* msg - a string representing the comment
+当解析内容为注释时调用
+* 参数
+    * msg - 表示注释的字符串
 
 ## parser.onWarning(function(msg) {})
 
-Called when a warning is encountered
-* Arguments
-	* msg - a string representing the warning message
+当解析警告时调用
+* 参数
+    * msg - 表示警告消息的字符串
 
 ## parser.onError(function(msg) {})
 
-Called when an error is encountered
-   * Arguments
-		* msg - a string representing the error message
+当解析错误时调用
+* 参数
+    * msg - 表示错误消息的字符串
 	
+    
 
-EXAMPLE USAGE
+示例
 -------------
 
 ```js
